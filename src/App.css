@@ -1,0 +1,324 @@
+html{
+  font-size:1rem;
+  font-family:"Roboto",sans-serif;
+}
+
+main{
+  max-width:600px;
+  margin:auto;
+  padding:1rem;
+}
+
+h1{
+  text-align:center;
+  font-weight:300;
+}
+
+.App{
+  display:flex;
+  flex-direction:column;
+}
+
+.Group{
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom:1rem;
+  display:flex;
+  flex-direction: row;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 3px 6px;
+  background-color:rgb(247, 247, 247);
+}
+
+.GroupHandle{
+  background-color:grey;
+  width:2rem;
+  margin:-0.5rem -0.5rem -0.5rem 1rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+  transition:0.1s;
+}
+
+.GroupHandle:hover{
+  background-color:rgb(83, 83, 83);
+  transition:0.1s;
+}
+
+.GroupMain{
+  display:flex;
+  flex-direction: column;
+  flex-grow:2;
+}
+
+.HomeGroup{
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  display:flex;
+  flex-direction: row;
+}
+
+.HomeGroup .GroupMain{
+  display:flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+}
+
+.HomeGroup .GroupHandle{
+  background-color:transparent;
+}
+
+
+.Group h3{
+  margin:0;
+  padding:0;
+  margin-bottom:0.3rem;
+}
+
+.TaskList{
+  display:flex;
+  flex-direction: column;
+ 
+}
+
+.Task{
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  margin-bottom: 8px;
+  display:flex;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 3px 6px;
+  background-color:white;
+}
+
+.Task.checked .TaskContent{
+  text-decoration:line-through;
+}
+
+.Task.checked{
+  background-color:lightgrey;
+  box-shadow: none;
+}
+
+.TaskHandle{
+  background-color:grey;
+  width:2rem;
+  height:2.38rem;
+  margin:-0.5rem -0.5rem -0.5rem 0;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.NewTask{
+  overflow:hidden;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content:space-between;
+  padding: 0;
+  border-radius: 0.3rem;
+  border:none;
+  color:lightgrey;
+  background-color:transparent;
+  text-align:left;
+  height: 2.3rem;
+  opacity:0.2;
+  background: linear-gradient(90deg, rgba(193,193,193,1) 0%, rgba(236,236,236,1) 27%, rgba(219,219,219,1) 100%);
+  transition: 0.8s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.GroupMain:hover .NewTask, .HomeGroup:hover .NewTask{
+  background: linear-gradient(90deg, rgba(193,193,193,1) 0%, rgba(236,236,236,1) 27%, rgba(219,219,219,1) 100%);
+  height: 2.3rem;
+  transition: 0.3s;
+  opacity:1;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+
+.NewTask-placeholder{
+  background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(157,157,157,1) 100%); 
+  margin-left:0.6rem;
+  width:0rem;
+  height: 1.2rem;
+  border-radius:0.2rem;
+  transition:0.1s;
+}
+
+.NewTask-handle{
+  background-color:#c4c4c4;
+  opacity:0;
+  width:2rem;
+  height:2.3rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.NewTask:hover .NewTask-handle{
+  opacity:1;
+  transition:0.2s;
+}
+
+.NewTask:hover .NewTask-placeholder{
+  height: 1.2rem;
+  width: 10rem;
+  transition:0.1s;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .NewTask {
+    background: linear-gradient(90deg, rgba(193,193,193,1) 0%, rgba(236,236,236,1) 27%, rgba(219,219,219,1) 100%);
+    height: 2.3rem;
+    transition: 0.3s;
+    opacity:1;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+  }
+  .NewTask-handle{
+    opacity:1;
+  }
+  .NewTask-placeholder{
+    height: 1.2rem;
+    width: 10rem;
+    transition:0.2s;
+  }
+}
+
+.Task.dragging{
+  box-shadow: none;
+}
+
+.TaskContent{
+  flex-grow:2;
+  margin-left:0.3em;
+  margin-right:0.5rem;
+  border:0;
+  box-sizing: border-box;
+  background-color:transparent;
+  font-size:1rem;
+}
+
+.GroupTitle{
+  margin-bottom:0.5rem;
+  border:0;
+  box-sizing: border-box;
+  font-size:1rem;
+  background-color:transparent;
+  font-weight:bold;
+}
+
+.GroupTitle:focus{
+  border:none;
+  box-shadow:none;
+  outline:none;
+}
+
+.TaskContent:focus{
+  border:none;
+  box-shadow:none;
+  outline:none;
+}
+
+.Task:focus-within{
+  outline:0.15rem solid #00d4ff;
+}
+
+.NewGroup{
+  overflow:hidden;
+  display:flex;
+  flex-direction:row;
+  align-items: stretch;
+  justify-content:space-between;
+  padding: 0;
+  border-radius: 0.3rem;
+  border:none;
+  color:lightgrey;
+  background-color:transparent;
+  text-align:left;
+  height: 2.3rem;
+  opacity:1;
+  background: linear-gradient(90deg, rgba(193,193,193,1) 0%, rgba(236,236,236,1) 27%, rgba(219,219,219,1) 100%);
+  transition: 0.8s;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+
+.NewGroup:hover{
+  height:5rem;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:0.2s;
+}
+
+.NewGroup:hover .NewGroup-handle{
+  opacity:1;
+}
+
+.NewGroup:hover .NewGroup-placeholder{
+  opacity:1;
+  width:100%;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:0.2s;
+}
+
+.NewGroup:hover .NewGroup-title{
+  opacity:1;
+  width: 10rem;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:0.2s;
+}
+
+.NewGroup-handle{
+  background-color:#c4c4c4;
+  opacity:0;
+  width:2rem;
+  min-height:2.3rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+  margin-left:1rem;
+}
+
+.NewGroup-placeholder{
+  background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(157,157,157,1) 100%); 
+  margin-left:0.6rem;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  width:20%;
+  height: 2.3rem;
+  border-radius:0.3rem;
+  transition:0.1s;
+  display:flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content:space-between;
+  opacity:0;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:0.2s;
+}
+
+.NewGroup-section{
+  width:100%;
+}
+
+.NewGroup-title{
+  height: 1.2rem;
+  width: 2rem;
+  background: linear-gradient(90deg, rgba(128,128,128,1) 0%, rgba(157,157,157,1) 100%); 
+  margin-left:0.6rem;
+  border-radius:0.2rem;
+  margin-top:0.5rem;
+  opacity:0;
+  transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition:0.2s;
+}
+
+.NewGroup-NewTask-handle{
+  background-color:#6e6e6e;
+  opacity:1;
+  width:2rem;
+  height:2.3rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+.NewGroup-NewTask-placeholder{
+  height: 1.2rem;
+  width: 10rem;
+  background: linear-gradient(90deg, rgb(100, 100, 100) 0%, rgb(117, 117, 117) 100%); 
+  margin-left:0.6rem;
+  border-radius:0.2rem;
+}
+
